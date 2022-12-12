@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-lg">
         <a class="navbar-brand" href="home"><i class="bi bi-fire"></i> CoudVape</a>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDarkDropdown">
