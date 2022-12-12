@@ -111,7 +111,6 @@ if (!empty($_SESSION['username_cloudvape'])) {
         </form>
     </main>
 
-
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (() => {
