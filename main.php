@@ -28,7 +28,7 @@ $hasil = mysqli_fetch_array($query);
     <?php include "header.php"; ?>
     <!--end header-->
 
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
             <!-- Sidebar -->
             <?php include "sidebar.php"; ?>
