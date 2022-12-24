@@ -95,7 +95,7 @@ while ($record = mysqli_fetch_array($query)) {
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_input_user.php" method="POST">
-                                
+
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
@@ -159,7 +159,7 @@ while ($record = mysqli_fetch_array($query)) {
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_edit_user.php" method="POST">
-                                <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
@@ -182,9 +182,9 @@ while ($record = mysqli_fetch_array($query)) {
                                                     $data = array("Admin", "Kasir", "Pelayan", "Dapur");
                                                     foreach ($data as $key => $value) {
                                                         if ($row['level'] == $key + 1) {
-                                                            echo "<option selected value=".($key+1).">$value </option>";
+                                                            echo "<option selected value=" . ($key + 1) . ">$value </option>";
                                                         } else {
-                                                            echo "<option value=".($key+1).">$value </option>";
+                                                            echo "<option value=" . ($key + 1) . ">$value </option>";
                                                         }
                                                     }
                                                     ?>
@@ -207,6 +207,37 @@ while ($record = mysqli_fetch_array($query)) {
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                         <button type="submit" class="btn btn-primary" name="input_user" value="1">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Delete -->
+                <div class="modal fade" id="modalDelete<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="modalView" aria-hidden="true">
+                    <div class="modal-dialog modal-md modal-fullscreen-md-down">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel"> Delet User</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="needs-validation" novalidate action="proses/proses_delete_user.php" method="POST">
+                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                    <div class="col-lg-12">
+                                        <?php
+                                        if ($row['username'] == $_SESSION['username_cloudvape']) {
+                                            echo "<div class='alert alert-danger'>Anda tidak dapat menghapus akun sendiri</div>";
+                                        } else {
+                                            echo "Apakah Anda yakin menghapus user <b> echo $row[username] </b>";
+                                        }
+                                        ?>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        <button type="submit" class="btn btn-danger" name="delete_us er" value="1" <?php echo ($row['username'] == $_SESSION['username_cloudvape']) ? 'disabled' : ''; ?>>Hapus</button>
                                     </div>
                                 </form>
                             </div>
@@ -255,7 +286,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     <td class="d-flex">
                                         <button class="btn btn-info me-1" data-bs-toggle="modal" data-bs-target="#modalView<?php echo $row['id'] ?>"><i class="bi bi-eye"></i></button>
                                         <button class="btn btn-warning me-1" data-bs-toggle="modal" data-bs-target="#modalEdit<?php echo $row['id'] ?>"><i class="bi bi-pencil-square"></i></i></button>
-                                        <button class="btn btn-danger"><i class="bi bi-trash"></i></i></button>
+                                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete<?php echo $row['id'] ?>"><i class="bi bi-trash"></i></i></button>
                                     </td>
                                 </tr>
                             <?php } ?>
