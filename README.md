@@ -1,1 +1,1 @@
-Cloud vape ini adalah aplikasi untuk kasir 
+Cloudvape adalah aplikasi kasir 
